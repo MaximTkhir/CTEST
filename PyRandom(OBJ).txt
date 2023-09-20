@@ -1,0 +1,36 @@
+import random
+
+def guess_number():
+    secret_number = random.randint(1, 100)
+    attempts = 0
+
+    print("Добро пожаловать в игру 'Угадай число'!")
+    print("Я загадал число от 1 до 100. Попробуйте угадать его.")
+
+    while True:
+        guess = input("Введите ваше предположение или 'выход' для выхода: ")
+        
+        if guess.lower() == "выход":
+            print("Спасибо за игру! До свидания.")
+            return
+        
+        guess = int(guess)
+        attempts += 1
+
+        if guess < secret_number:
+            print("Загаданное число больше вашего предположения")
+        elif guess > secret_number:
+            print("Загаданное число меньше вашего предположения")
+        else:
+            print("Поздравляю, вы угадали число!")
+            print("Количество попыток:", attempts)
+            break
+
+    play_again = input("Хотите сыграть еще раз? (Да/Нет): ")
+
+    if play_again.lower() == "да":
+        guess_number()
+    else:
+        print("Спасибо за игру! До свидания.")
+
+guess_number()
